@@ -20,7 +20,6 @@ public class SampleJFrame extends JFrame {
         placeComponents();
         basePanel.setBackground(bgColor);
 
-        this.pack();
         this.setTitle("Sample Base");
         this.setSize(600, 400);
         this.setLocationRelativeTo(null);
