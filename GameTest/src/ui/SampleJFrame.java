@@ -25,14 +25,11 @@ public class SampleJFrame extends JFrame {
         this.setSize(600, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new SampleJFrame().setVisible(true);
-            }
-        });
+        new SampleJFrame();
     }
 
     private void placeComponents() {
