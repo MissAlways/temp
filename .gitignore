@@ -12,3 +12,6 @@
 hs_err_pid*
 /GameTest/nbproject/private/
 /GameTest/build/
+
+#Propereties
+config.properties
