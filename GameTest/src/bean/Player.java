@@ -30,6 +30,7 @@ public class Player {
     }
 
     public Player() {
+        playerId = 0;
         name = "Player";
         movingSpeed = 100;
         healthMax = 100;
