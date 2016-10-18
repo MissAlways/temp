@@ -7,7 +7,6 @@ import java.awt.RenderingHints;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -15,7 +14,9 @@ import javax.swing.SwingUtilities;
  */
 public class SampleJFrame extends JFrame {
 
-    private JPanel basePanel = new JPanel();
+	private static final long serialVersionUID = 1L;
+
+	private JPanel basePanel = new JPanel();
 
     private Color bgColor = Color.BLACK;
 
