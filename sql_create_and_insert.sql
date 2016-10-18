@@ -1,0 +1,65 @@
+CREATE TABLE PLAYER(
+	playerId INTEGER NOT NULL AUTO_INCREMENT,
+	name VARCHAR(30) NOT NULL UNIQUE,
+	healthCurrent INTEGER NOT NULL,
+    hunger INTEGER NOT NULL,
+	happiness INTEGER NOT NULL,
+	money DECIMAL NOT NULL,
+
+    PRIMARY KEY (playerId)	
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE ITEM(
+	itemId INTEGER NOT NULL AUTO_INCREMENT,
+	name VARCHAR(30) NOT NULL,
+    incase VARCHAR(30),
+    incaseAmount INTEGER,
+	cost DECIMAL NOT NULL,
+	
+    PRIMARY KEY (itemId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE COURSE(
+	courseId INTEGER NOT NULL AUTO_INCREMENT,
+	description VARCHAR(255) NOT NULL,
+	done INTEGER NOT NULL,
+	have INTEGER NOT NULL,
+	cost DECIMAL NOT NULL,
+	playerId INTEGER NOT NULL,
+
+	PRIMARY KEY(courseId),
+	FOREIGN KEY (playerId) REFERENCES PLAYER(playerId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE HOMEUPGRADE(
+	upgradeId INTEGER NOT NULL AUTO_INCREMENT,
+	description VARCHAR(255) NOT NULL,
+	got BOOLEAN NOT NULL,
+	cost DECIMAL NOT NULL,
+	playerId INTEGER NOT NULL,
+	
+	PRIMARY KEY(upgradeId),
+	FOREIGN KEY (playerId) REFERENCES PLAYER(playerId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE ITEMPERPLAYER(
+	itemId INTEGER NOT NULL,
+	playerId INTEGER NOT NULL,
+	amount INTEGER NOT NULL,
+	
+	PRIMARY KEY(itemId, playerId),
+	FOREIGN KEY (itemId) REFERENCES ITEM(itemId),
+	FOREIGN KEY (playerId) REFERENCES PLAYER(playerId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO PLAYER (name, healthCurrent, hunger, happiness, money) 
+VALUES ("Killer666", 100, 100, 100, 250), 
+("H4kk3rm4n", 100, 100, 100, 200);
+
+
+INSERT INTO ITEM (name, incase, incaseAmount, cost) 
+VALUES ("Bread", "food", 40, 10.5), 
+("Vitamins", "hp", 70, 30.5), 
+("Cinema ticket", "fun", 60, 15.5);
+
+
