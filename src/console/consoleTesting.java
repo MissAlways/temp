@@ -29,9 +29,10 @@ public class consoleTesting {
 	}
 
 	private static void handleArguments(Scanner scan) {
+		int id;
 		System.out.print("Select option " + "\n0. quit."
 				+ "\n1. print all players" + "\n2. print player by id"
-				+ "\n3. print all items" + "\nYour choice: ");
+				+ "\n3. print all items" + "\n4. print item by id" + "\nYour choice: ");
 		int choose = scan.nextInt();
 		scan.nextLine();
 
@@ -44,18 +45,31 @@ public class consoleTesting {
 			break;
 		case 2:
 			System.out.print("Id: ");
-			int id = scan.nextInt();
+			id = scan.nextInt();
 			scan.nextLine();
-			printById(id);
+			printPlayerById(id);
 			break;
 		case 3:
 			printAllItems();
 			break;
+		case 4: 
+			System.out.print("Id: ");
+			id = scan.nextInt();
+			scan.nextLine();
+			printItemById(id);
 		default:
 			System.out.println("Wrong number");
 			break;
 		}
 		handleArguments(scan);
+	}
+
+	private static void printItemById(int itemId) {
+		ItemDao itemDao = new ItemDao();
+		Item item = itemDao.getItem(itemId);
+
+		System.out.println(item.toString());
+		
 	}
 
 	private static void printAllItems() {
@@ -72,7 +86,7 @@ public class consoleTesting {
 
 	}
 
-	private static void printById(int playerId) {
+	private static void printPlayerById(int playerId) {
 		PlayerDao playerDao = new PlayerDao();
 		Player player = playerDao.getPlayer(playerId);
 
