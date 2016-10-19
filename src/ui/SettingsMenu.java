@@ -1,13 +1,14 @@
 package ui;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.print.attribute.ResolutionSyntax;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,7 +16,6 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerListModel;
-import javax.swing.SwingUtilities;
 
 import bean.Options;
 import db.OptionsDao;
@@ -26,32 +26,26 @@ import db.OptionsDao;
  *
  */
 public class SettingsMenu extends JFrame {
-	JPanel basePanel = new JPanel();
+	private JPanel basePanel = new JPanel(new BorderLayout());
 
 	// Labels
 	private JLabel resolutionLabel = new JLabel("Resolution");
-	private JLabel resolutionCustomLabel = new JLabel("Custom: ");
-	private JLabel fullscreenLabel = new JLabel("Fullscreen");
-	private JLabel soundLabel = new JLabel("Sound");
-	private JLabel musicLabel = new JLabel("Music");
+
 	// TextFields
 	private JTextField customX = new JTextField();
 	private JTextField customY = new JTextField();
 	// Spinner
-	private String[] resolutionList = new String[] { "640 × 480", "720 × 480",
-			"720 × 576", "800 × 600", "1024 × 768", "1280 × 720", "1280 × 768",
-			"1280 × 800", "1280 × 960", "1280 × 1024", "1440 × 900",
-			"1680 × 1050" };
+	private String[] resolutionList = new String[] { "640 X 480", "720 X 480", "720 X 576", "800 X 600", "1024 X 768",
+			"1280 X 720", "1280 X 768", "1280 X 800", "1280 X 960", "1280 X 1024", "1440 X 900", "1680 X 1050" };
 
-	private SpinnerListModel resolutionModel = new SpinnerListModel(
-			resolutionList);
-	private JSpinner resolution = new JSpinner();
+	private SpinnerListModel resolutionModel = new SpinnerListModel(resolutionList);
+	private JSpinner resolutionSpinner = new JSpinner(resolutionModel);
 
 	// JCheckBoxes
 	private JCheckBox customResolutionCheckBox = new JCheckBox("Custom: ");
-	private JCheckBox musicCheckBox = new JCheckBox();
-	private JCheckBox soundCheckBox = new JCheckBox();
-	private JCheckBox fullscreenCheckBox = new JCheckBox();
+	private JCheckBox musicCheckBox = new JCheckBox("Music ");
+	private JCheckBox soundCheckBox = new JCheckBox("Sound ");
+	private JCheckBox fullscreenCheckBox = new JCheckBox("Fullscreen ");
 
 	// Sliders
 	private JSlider soundVolumeSlider = new JSlider(0, 100);
@@ -65,7 +59,14 @@ public class SettingsMenu extends JFrame {
 		OptionsDao optionsDao = new OptionsDao();
 		Options options = optionsDao.getOptions();
 
+		Component spinnerEditor = resolutionSpinner.getEditor();
+		JFormattedTextField jftf = ((JSpinner.DefaultEditor) spinnerEditor).getTextField();
+		jftf.setColumns(8);
+
+		resolutionSpinner.setSize(50, 10);
+
 		getCurrentSettings(options);
+		placeComponents();
 		// SET FULLSCREEN
 		// this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		// this.setUndecorated(true);
@@ -91,19 +92,63 @@ public class SettingsMenu extends JFrame {
 
 	}
 
+	private void placeComponents() {
+
+		JPanel resolutionPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		resolutionPanel.add(resolutionLabel);
+		resolutionPanel.add(resolutionSpinner);
+
+		JPanel customResolutionPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		customResolutionPanel.add(customResolutionCheckBox);
+		customResolutionPanel.add(customX);
+		customResolutionPanel.add(customY);
+
+		JPanel fullscreenPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		fullscreenPanel.add(fullscreenCheckBox);
+
+		JPanel grid = new JPanel(new GridLayout(5, 1));
+		grid.add(resolutionPanel);
+		grid.add(customResolutionPanel);
+		grid.add(fullscreenPanel);
+
+		JPanel leftPanel = new JPanel(new FlowLayout());
+		leftPanel.add(grid);
+
+		basePanel.add(leftPanel, BorderLayout.LINE_START);
+
+		JPanel soundPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		soundPanel.add(soundCheckBox);
+
+		JPanel soundVolumePanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		soundVolumePanel.add(soundVolumeSlider);
+
+		JPanel musicPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		musicPanel.add(musicCheckBox);
+
+		JPanel musicVolumePanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+		musicVolumePanel.add(musicVolumeSlider);
+
+		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+		buttonPanel.add(backBtn);
+		buttonPanel.add(saveBtn);
+
+		JPanel grid2 = new JPanel(new GridLayout(5, 1));
+		grid2.add(soundPanel);
+		grid2.add(soundVolumePanel);
+		grid2.add(musicPanel);
+		grid2.add(musicVolumePanel);
+
+		JPanel rightPanel = new JPanel(new FlowLayout());
+		rightPanel.add(grid2);
+
+		basePanel.add(rightPanel, BorderLayout.LINE_END);
+		basePanel.add(buttonPanel, BorderLayout.PAGE_END);
+
+	}
+
 	public static void main(String[] args) {
-		/*
-		 * Swing-ikkuna on syytä luoda tapahtumasäikeeseen käyttäen
-		 * SwingUtilities.invokeLater-metodia.
-		 */
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				new SettingsMenu().setVisible(true); /*
-														 * Luo ja näyttää
-														 * ikkunan
-														 */
-			}
-		});
+		new SettingsMenu().setVisible(true);
+
 	}
 
 	private void getCurrentSettings(Options options) {
@@ -120,5 +165,4 @@ public class SettingsMenu extends JFrame {
 
 	}
 
-	
 }
