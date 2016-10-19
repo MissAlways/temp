@@ -10,13 +10,12 @@ import java.util.ArrayList;
 import bean.Item;
 import bean.Player;
 
-
 /**
  * 
  * @author MissAlways
  *
  */
-public class ItemDao extends DataAccessObject{
+public class ItemDao extends DataAccessObject {
 	public List<Item> getAllItems() {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -56,7 +55,7 @@ public class ItemDao extends DataAccessObject{
 		return itemList;
 	}
 
-	public Item getItem(int itemId){
+	public Item getItem(int itemId) {
 		Item item = new Item();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -89,10 +88,8 @@ public class ItemDao extends DataAccessObject{
 		} finally {
 			close(preparedStatement, connection);
 		}
-		
-		
-		
+
 		return item;
-		
+
 	}
 }
