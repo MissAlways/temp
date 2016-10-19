@@ -49,6 +49,8 @@ public class MainMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//new SettingsMenu().setVisible(true);
 				// TODO
+				SettingsMenu settingsMenu = new SettingsMenu();
+				settingsMenu.setVisible(true);
 			}
 		});
 
