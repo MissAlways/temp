@@ -25,7 +25,7 @@ public class PlayerDao extends DataAccessObject {
 
 			connection = getConnection();
 			connection.setAutoCommit(false);
-			String sql = "SELECT playerId, name, healthCurrent, hunger, happiness, money FROM player;";
+			String sql = "SELECT playerId, name, healthCurrent, hunger, happiness, money FROM PLAYER;";
 
 			preparedStatement = connection.prepareStatement(sql);
 
@@ -65,7 +65,7 @@ public class PlayerDao extends DataAccessObject {
 		try {
 			connection = getConnection();
 			connection.setAutoCommit(false);
-			String sql = "SELECT `playerId`, `name`, `healthCurrent`, `hunger`, `happiness`, `money` FROM `player` WHERE playerId=?;";
+			String sql = "SELECT playerId, name, healthCurrent, hunger, happiness, money FROM PLAYER WHERE playerId=?;";
 
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, playerId);
