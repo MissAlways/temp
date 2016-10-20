@@ -84,6 +84,15 @@ public class MainJFrame implements ItemListener {
 
 		pane.add(cards, BorderLayout.CENTER);
 
+		exitBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+
+			}
+		});
+
 		optionsBtn.addActionListener(new ActionListener() {
 
 			@Override
