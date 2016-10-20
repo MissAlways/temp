@@ -106,6 +106,7 @@ public class OptionsDao {
 			properties.setProperty("music", temp);
 			temp = Integer.toString(options.getMusicVolume());
 			properties.setProperty("musicVolume", temp);
+			properties.store(outputStream, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
