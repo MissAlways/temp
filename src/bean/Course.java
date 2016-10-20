@@ -29,8 +29,7 @@ public class Course {
 	 * @param cost
 	 *            how much this course cost from player
 	 */
-	public Course(int courseId, String name, String description, int done,
-			int have, double cost) {
+	public Course(int courseId, String name, String description, int done, int have, double cost) {
 		this.courseId = courseId;
 		this.name = name;
 		this.description = description;
@@ -148,9 +147,8 @@ public class Course {
 	 */
 	@Override
 	public String toString() {
-		return "Course [courseId=" + courseId + ", name=" + name
-				+ ", description=" + description + ", done=" + done + ", have="
-				+ have + ", cost=" + cost + "]";
+		return "Course [courseId=" + courseId + ", name=" + name + ", description=" + description + ", done=" + done
+				+ ", have=" + have + ", cost=" + cost + "]";
 	}
 
 }

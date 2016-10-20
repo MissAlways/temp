@@ -38,7 +38,8 @@ public class HomeUpgrade {
 	}
 
 	/**
-	 * @param upgradeId the upgradeId to set
+	 * @param upgradeId
+	 *            the upgradeId to set
 	 */
 	public void setUpgradeId(int upgradeId) {
 		this.upgradeId = upgradeId;
@@ -52,7 +53,8 @@ public class HomeUpgrade {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -66,19 +68,21 @@ public class HomeUpgrade {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "HomeUpgrade [upgradeId=" + upgradeId + ", name=" + name
-				+ ", description=" + description + "]";
+		return "HomeUpgrade [upgradeId=" + upgradeId + ", name=" + name + ", description=" + description + "]";
 	}
-	
+
 }

@@ -14,13 +14,20 @@ public class Options {
 	private int musicVolume;
 
 	/**
-	 * @param resolutionX horizontal resolution
-	 * @param resolutionY vertical resolution
-	 * @param fullscreen fullscreen on(true) or off(false)
-	 * @param sound sound on(true) or off(false)
-	 * @param soundVolume sound volume
-	 * @param music music on(true) or off(false)
-	 * @param musicVolume music volume
+	 * @param resolutionX
+	 *            horizontal resolution
+	 * @param resolutionY
+	 *            vertical resolution
+	 * @param fullscreen
+	 *            fullscreen on(true) or off(false)
+	 * @param sound
+	 *            sound on(true) or off(false)
+	 * @param soundVolume
+	 *            sound volume
+	 * @param music
+	 *            music on(true) or off(false)
+	 * @param musicVolume
+	 *            music volume
 	 */
 	public Options() {
 		resolutionX = 600;
@@ -32,10 +39,11 @@ public class Options {
 		musicVolume = 100;
 	}
 
-	public String getResolution(){
-		String reso = resolutionX+" x "+resolutionY;
+	public String getResolution() {
+		String reso = resolutionX + " x " + resolutionY;
 		return reso;
 	}
+
 	/**
 	 * @return the resolutionX
 	 */
@@ -148,10 +156,9 @@ public class Options {
 	 */
 	@Override
 	public String toString() {
-		return "Options [resolutionX=" + resolutionX + ", resolutionY="
-				+ resolutionY + ", fullscreen=" + fullscreen + ", sound="
-				+ sound + ", soundVolume=" + soundVolume + ", music=" + music
-				+ ", musicVolume=" + musicVolume + "]";
+		return "Options [resolutionX=" + resolutionX + ", resolutionY=" + resolutionY + ", fullscreen=" + fullscreen
+				+ ", sound=" + sound + ", soundVolume=" + soundVolume + ", music=" + music + ", musicVolume="
+				+ musicVolume + "]";
 	}
 
 }

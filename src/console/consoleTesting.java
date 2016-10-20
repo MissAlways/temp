@@ -30,14 +30,13 @@ public class consoleTesting {
 
 	private static void handleArguments(Scanner scan) {
 		int id;
-		System.out.print("Select option " + "\n0. quit."
-				+ "\n1. print all players" + "\n2. print player by id"
+		System.out.print("Select option " + "\n0. quit." + "\n1. print all players" + "\n2. print player by id"
 				+ "\n3. print all items" + "\n4. print item by id" + "\nYour choice: ");
 		int choose = scan.nextInt();
 		scan.nextLine();
 
 		switch (choose) {
-		case 0: 
+		case 0:
 			System.out.println("Bye!");
 			return;
 		case 1:
@@ -52,7 +51,7 @@ public class consoleTesting {
 		case 3:
 			printAllItems();
 			break;
-		case 4: 
+		case 4:
 			System.out.print("Id: ");
 			id = scan.nextInt();
 			scan.nextLine();
@@ -69,7 +68,7 @@ public class consoleTesting {
 		Item item = itemDao.getItem(itemId);
 
 		System.out.println(item.toString());
-		
+
 	}
 
 	private static void printAllItems() {

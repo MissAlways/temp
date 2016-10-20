@@ -40,8 +40,7 @@ public class Player {
 	 * @param homeUpgrades
 	 *            list of home upgrades that player bought
 	 */
-	public Player(int playerId, String name, int hunger, int health,
-			int happiness, double money, List<Item> inventory,
+	public Player(int playerId, String name, int hunger, int health, int happiness, double money, List<Item> inventory,
 			List<Course> courses, List<HomeUpgrade> homeUpgrades) {
 		this.playerId = playerId;
 		this.name = name;
@@ -208,11 +207,9 @@ public class Player {
 	 */
 	@Override
 	public String toString() {
-		return "Player [playerId=" + playerId + ", name=" + name + ", hunger="
-				+ hunger + ", health=" + health + ", happiness=" + happiness
-				+ ", money=" + money + ", inventory=" + inventory
-				+ ", courses=" + courses + ", homeUpgrades=" + homeUpgrades
-				+ "]";
+		return "Player [playerId=" + playerId + ", name=" + name + ", hunger=" + hunger + ", health=" + health
+				+ ", happiness=" + happiness + ", money=" + money + ", inventory=" + inventory + ", courses=" + courses
+				+ ", homeUpgrades=" + homeUpgrades + "]";
 	}
 
 }
