@@ -32,6 +32,10 @@ public class Options {
 		musicVolume = 100;
 	}
 
+	public String getResolution(){
+		String reso = resolutionX+" x "+resolutionY;
+		return reso;
+	}
 	/**
 	 * @return the resolutionX
 	 */
