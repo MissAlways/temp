@@ -7,8 +7,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -32,7 +30,7 @@ import db.OptionsDao;
  * @author MissAlways
  *
  */
-public class MainJFrame implements ItemListener {
+public class MainJFrame {
 	JPanel cards;
 
 	// Mainmenu
@@ -278,11 +276,6 @@ public class MainJFrame implements ItemListener {
 		basePanel.add(rightPanel);
 
 		return basePanel;
-	}
-
-	public void itemStateChanged(ItemEvent event) {
-		CardLayout cardLayout = (CardLayout) (cards.getLayout());
-		cardLayout.show(cards, (String) event.getItem());
 	}
 
 	public static void getUi() {
