@@ -173,7 +173,6 @@ public class MainJFrame {
 				options.setMusicVolume(musicVolume);
 
 				OptionsDao optionsDao = new OptionsDao();
-				System.out.println(options.toString());
 				optionsDao.setOptions(options);
 			}
 		});
