@@ -20,52 +20,43 @@ public class OptionsDao {
 		InputStream inputStream = null;
 		Properties properties = new Properties();
 		Options options = new Options();
-		String temp;
 
 		try {
 			inputStream = new FileInputStream("settings.ini");
 			properties.load(inputStream);
 			try {
-				temp = properties.getProperty("resolutionX");
-				options.setResolutionX(Integer.parseInt(temp));
+				options.setResolutionX(Integer.parseInt(properties.getProperty("resolutionX")));
 
 			} catch (Exception e) {
 				System.out.println("Horizontal resolution incorrect");
 			}
 			try {
-				temp = properties.getProperty("resolutionY");
-				options.setResolutionY(Integer.parseInt(temp));
+				options.setResolutionY(Integer.parseInt(properties.getProperty("resolutionY")));
 			} catch (Exception e) {
 				System.out.println("Vertical resolution incorrect");
 			}
 			try {
-				temp = properties.getProperty("fullscreen");
-				options.setFullscreen(Boolean.parseBoolean(temp));
+				options.setFullscreen(Boolean.parseBoolean(properties.getProperty("fullscreen")));
 			} catch (Exception e) {
 				System.out.println("Fullscreen setting incorrect");
 			}
 			try {
-				temp = properties.getProperty("sound");
-				options.setSound(Boolean.parseBoolean(temp));
+				options.setSound(Boolean.parseBoolean(properties.getProperty("sound")));
 			} catch (Exception e) {
 				System.out.println("Sound setting incorrect");
 			}
 			try {
-				temp = properties.getProperty("soundVolume");
-				options.setSoundVolume(Integer.parseInt(temp));
+				options.setSoundVolume(Integer.parseInt(properties.getProperty("soundVolume")));
 			} catch (Exception e) {
 				System.out.println("SoundVolume setting incorrect");
 			}
-
 			try {
-				temp = properties.getProperty("music");
-				options.setMusic(Boolean.parseBoolean(temp));
+				options.setMusic(Boolean.parseBoolean(properties.getProperty("music")));
 			} catch (Exception e) {
 				System.out.println("music setting incorrect");
 			}
 			try {
-				temp = properties.getProperty("musicVolume");
-				options.setMusicVolume(Integer.parseInt(temp));
+				options.setMusicVolume(Integer.parseInt(properties.getProperty("musicVolume")));
 			} catch (Exception e) {
 				System.out.println("MusicVolume setting incorrect");
 			}
@@ -85,32 +76,23 @@ public class OptionsDao {
 		return options;
 	}
 
-	public void setOptions(Options options){
+	public void setOptions(Options options) {
 		Properties properties = new Properties();
 		OutputStream outputStream = null;
-		String temp;
-		
+
 		try {
 			outputStream = new FileOutputStream("settings.ini");
-			temp = Integer.toString(options.getResolutionX());
-			properties.setProperty("resolutionX", temp);
-			temp = Integer.toString(options.getResolutionY());
-			properties.setProperty("resolutionY", temp);
-			temp = Boolean.toString(options.isFullscreen());
-			properties.setProperty("fullscreen", temp);
-			temp = Boolean.toString(options.isSound());
-			properties.setProperty("sound", temp);
-			temp = Integer.toString(options.getSoundVolume());
-			properties.setProperty("soundVolume", temp);
-			temp = Boolean.toString(options.isMusic());
-			properties.setProperty("music", temp);
-			temp = Integer.toString(options.getMusicVolume());
-			properties.setProperty("musicVolume", temp);
+			properties.setProperty("resolutionX", Integer.toString(options.getResolutionX()));
+			properties.setProperty("resolutionY", Integer.toString(options.getResolutionY()));
+			properties.setProperty("fullscreen", Boolean.toString(options.isFullscreen()));
+			properties.setProperty("sound", Boolean.toString(options.isSound()));
+			properties.setProperty("soundVolume", Integer.toString(options.getSoundVolume()));
+			properties.setProperty("music", Boolean.toString(options.isMusic()));
+			properties.setProperty("musicVolume", Integer.toString(options.getMusicVolume()));
 			properties.store(outputStream, null);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		finally{
+		} finally {
 			if (outputStream != null) {
 				try {
 					outputStream.close();
